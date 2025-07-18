@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-import player
+from player import Player
 
 
 def main():
@@ -16,20 +16,24 @@ def main():
     updateable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     
-    player.containers = (updateable, drawable)
+    Player.containers = (updateable, drawable)
 
-    player1 = player.player((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))
+    player1 = Player((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))
     
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
             
-        pygame.Surface.fill(screen, (0,0,0))
-        player1.draw(screen)
+        updateable.update(dt)    
+        screen.fill((0,0,0))
+        for obj in drawable:
+            obj.draw(screen)
         pygame.display.flip()
+
+        #limit Framerate to 60 FPS
         dt = clock.tick(60) / 1000
-        player1.update(dt)
+        
 
 if __name__ == "__main__":
     main()

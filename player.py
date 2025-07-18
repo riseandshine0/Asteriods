@@ -2,11 +2,10 @@ import pygame
 import circleshape
 from constants import *
 
-class player(circleshape.CircleShape):
+class Player(circleshape.CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
-        containers = []
         
     def draw(self, screen):
         pygame.draw.polygon(screen, (255,255,255), self.triangle(), 2)
