@@ -11,10 +11,15 @@ def main():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
-    player1 = player.player((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))
     dt = 0
 
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    player.containers = (updateable, drawable)
 
+    player1 = player.player((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
