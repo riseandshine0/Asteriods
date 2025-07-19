@@ -7,7 +7,7 @@ class Shot(circleshape.CircleShape):
         super().__init__(x, y, SHOT_RADIUS)
 
     def draw(self, screen):
-        pygame.draw.circle(screen, (255,255,255), self.position, SHOT_RADIUS, width=1)
+        pygame.draw.circle(screen, (255,255,255), self.position, SHOT_RADIUS, width=2)
 
     def update(self, dt):
         forward = pygame.Vector2(0, 1)
